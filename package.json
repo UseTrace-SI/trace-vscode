@@ -24,7 +24,10 @@
     "agent"
   ],
   "activationEvents": [
-    "onLanguage:*"
+    "workspaceContains:.trace",
+    "onCommand:trace.why",
+    "onCommand:trace.sessionHistory",
+    "onCommand:trace.reviewFindings"
   ],
   "main": "./out/extension.js",
   "contributes": {
