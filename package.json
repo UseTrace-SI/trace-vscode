@@ -1,0 +1,79 @@
+{
+  "name": "trace-vscode",
+  "displayName": "Trace - AI Code Provenance",
+  "description": "See which AI agent wrote each line of code with inline 'trace why' hovers, session history, and review findings.",
+  "version": "0.1.0",
+  "publisher": "UseTrace",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UseTrace-SI/trace-vscode"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "ai",
+    "provenance",
+    "trace",
+    "code attribution",
+    "agent"
+  ],
+  "activationEvents": [
+    "onLanguage:*"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "trace.why",
+        "title": "Trace: Why was this line written?"
+      },
+      {
+        "command": "trace.sessionHistory",
+        "title": "Trace: Show Session History"
+      },
+      {
+        "command": "trace.reviewFindings",
+        "title": "Trace: Show Review Findings"
+      }
+    ],
+    "configuration": {
+      "title": "Trace",
+      "properties": {
+        "trace.cliPath": {
+          "type": "string",
+          "default": "trace",
+          "description": "Path to the trace CLI binary"
+        },
+        "trace.autoDecorate": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically show provenance decorations on open files"
+        },
+        "trace.decorationStyle": {
+          "type": "string",
+          "enum": ["inline", "gutter", "both"],
+          "default": "inline",
+          "description": "How to display provenance information"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src/",
+    "package": "vsce package",
+    "test": "node --experimental-vm-modules node_modules/vitest/vitest.mjs run"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "typescript": "~5.7.0",
+    "vitest": "^5.0.0"
+  }
+}
