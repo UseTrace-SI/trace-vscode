@@ -57,7 +57,7 @@ export function activate(context: vscode.ExtensionContext) {
         vscode.window.showInformationMessage('No review findings');
         return;
       }
-      const diagnostics = new vscode.DiagnosticCollection();
+      const diagnostics = vscode.languages.createDiagnosticCollection('trace-review');
       const byFile = new Map<string, vscode.Diagnostic[]>();
       for (const f of findings) {
         const uri = vscode.Uri.file(f.file);

@@ -57,7 +57,11 @@
         },
         "trace.decorationStyle": {
           "type": "string",
-          "enum": ["inline", "gutter", "both"],
+          "enum": [
+            "inline",
+            "gutter",
+            "both"
+          ],
           "default": "inline",
           "description": "How to display provenance information"
         }
@@ -72,6 +76,7 @@
     "test": "node --experimental-vm-modules node_modules/vitest/vitest.mjs run"
   },
   "devDependencies": {
+    "@types/node": "^26.6.10",
     "@types/vscode": "^1.85.0",
     "typescript": "~5.7.0",
     "vitest": "^5.0.0"
